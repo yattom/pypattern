@@ -1,0 +1,27 @@
+Experimental implementation of Ruby's case statement or, rather, Scala's match function.  See docs in pattern.py for details.
+
+examples:
+
+>>> from pattern import switch, Any, Var
+>>> switch('B',
+...        'A', 1,
+...        'B', 2,
+...        'C', 3)
+2
+>>> switch(65,
+...        Any(range(91, 100)), 'A',
+...        Any(range(81, 90)), 'B',
+...        Any(range(61, 80)), 'C',
+...        Any(), 'F')
+'C'
+>>> switch(['+', 10, 20],
+...        ['+', Var('a'), Var('b')], lambda a,b: a+b,
+...        ['-', Var('a'), Var('b')], lambda a,b: a-b,
+...        ['*', Var('a'), Var('b')], lambda a,b: a*b,
+...        ['/', Var('a'), Var('b')], lambda a,b: a/b,
+...        Var('a'), lambda a: a)
+30
+
+
+Imspired from a Scala pair-programming session with @sandayuu (Tsuyoshi Ushio) at Coderetreat Tokyo 2011.
+
