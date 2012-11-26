@@ -2,3 +2,6 @@
 *~
 *.BAK
 *.swp
+build/
+dist/
+pypattern.egg-info/
